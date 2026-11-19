@@ -30,9 +30,9 @@ from xgboost import XGBClassifier
 
 # --- CONFIGURATION ---
 SEED = 42
-DATA_PATH = (
-    Path.home() / "Desktop" / "ML2 PROJECT" / "archive" / "cme_events_2year.csv"
-)
+DEFAULT_PATH = Path("cme_events_2year.csv")
+LEGACY_PATH = Path.home() / "Desktop" / "ML2 PROJECT" / "archive" / "cme_events_2year.csv"
+DATA_PATH = DEFAULT_PATH if DEFAULT_PATH.exists() else LEGACY_PATH
 TIME_COL = "start_time"
 TARGET = "target_gst"
 BASE_FEATURES = ["speed", "half_angle", "latitude", "longitude"]
